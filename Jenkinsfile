@@ -2,7 +2,7 @@ pipeline {
     agent {
         // 使用 Docker 容器作为 Jenkins Agent
         docker {
-            image 'mcr.microsoft.com/playwright:v1.33.0-focal' // 官方 Playwright Docker 镜像
+            image 'mcr.microsoft.com/playwright:v1.52.0-noble' // 官方 Playwright Docker 镜像
             args '-u root' // 以 root 用户运行容器，确保有权限安装依赖
         }
     }
