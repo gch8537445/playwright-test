@@ -31,10 +31,7 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: '您要去哪' }).fill('七贤岭');
   await page.getByText('入口').click();
   await page.getByText(/同时呼叫/).click();
-  await expect(page.locator('#root')).toMatchAriaSnapshot(`- button "确认叫车"`);
-
-  //await page.getByRole('button', { name: '确认叫车' }).click();
-  //await expect(page.getByText('下单限制已失效，不可再次下单，请重新登录！')).toBeVisible();
-
+  await page.getByRole('button', { name: '确认叫车' }).click();
+  await expect(page.getByText('下单限制已失效，不可再次下单，请重新登录！')).toBeVisible();
   //await expect(page.locator('body')).toMatchAriaSnapshot(`- text: 用车时间不在限制范围内`);
 });
