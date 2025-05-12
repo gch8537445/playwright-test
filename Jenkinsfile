@@ -25,15 +25,7 @@ pipeline {
             steps {
                 script {
                     // 执行 Playwright 测试
-                    sh 'npx playwright test greaty --reporter=dot'
-                }
-            }
-        }
-        stage('Generate Test Report') {
-            steps {
-                script {
-                    // 生成 Playwright 的 HTML 报告
-                    sh 'npx playwright show-report'
+                    sh 'npx playwright test greaty'
                 }
             }
         }
