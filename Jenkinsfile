@@ -57,7 +57,7 @@ pipeline {
             // 3. 发布 Allure 报告
             allure([
               includeProperties: false,
-              jdk: '',
+              jdk: 'jdk',
               results: [[path: 'allure-results']],
               reportBuildPolicy: 'ALWAYS'
             ])
