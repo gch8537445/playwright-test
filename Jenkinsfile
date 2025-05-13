@@ -13,6 +13,11 @@ pipeline {
                 checkout scm
             }
         }
+        tools {
+            allure 'Allure' // Jenkins 会负责将此工具注入到 agent
+            // 你可能还需要配置 Node.js 工具，而不是依赖 Docker 镜像中的版本
+            // nodejs 'NodeJS-18' // 假设你在全局工具中配置了 NodeJS
+        }
         stage('Install Dependencies') {
             steps {
                 script {
