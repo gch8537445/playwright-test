@@ -29,14 +29,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // 同时生成 HTML、JUnit XML、Allure 数据
+/*                     // 同时生成 HTML、JUnit XML、Allure 数据
                     sh '''
                       npx playwright test greaty \
                         --reporter=html \
                         --reporter=junit \
                         --reporter=allure-playwright
-                    '''
-                    //sh 'npx playwright test greaty '
+                    ''' */
+                    sh 'npx playwright test greaty '
                 }
             }
         }
@@ -44,23 +44,23 @@ pipeline {
     post {
         always {
             // 将测试报告归档到 Jenkins
-            //archiveArtifacts artifacts: '**/playwright-report/**', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'playwright-report/**/*, test-results/**, allure-report/**/*', fingerprint: true, allowEmptyArchive: true
-            // 1. 发布 JUnit 报告
-            junit allowEmptyResults: true, testResults: '**/results.xml'
+            archiveArtifacts artifacts: '**/playwright-report/**', fingerprint: true, allowEmptyArchive: true
+            //archiveArtifacts artifacts: 'playwright-report/**/*, playwright-results/**, allure-report/**/*', fingerprint: true, allowEmptyArchive: true
+            /* // 1. 发布 JUnit 报告
+            junit allowEmptyResults: true, testResults: '**//* results.xml' */
             // 2. 发布 HTML 报告
             publishHTML target: [
               reportDir: 'playwright-report',
               reportFiles: 'index.html',
               reportName: 'Playwright HTML Report'
             ]
-            // 3. 发布 Allure 报告
+            /* // 3. 发布 Allure 报告
             allure([
               includeProperties: false,
               jdk: 'jdk',
               results: [[path: 'allure-results']],
               reportBuildPolicy: 'ALWAYS'
-            ])
+            ]) */
         }
         success {
             echo '测试成功完成！'
