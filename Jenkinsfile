@@ -45,7 +45,7 @@ pipeline {
         always {
             // 将测试报告归档到 Jenkins
             //archiveArtifacts artifacts: '**/playwright-report/**', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'playwright-report/**/*, playwright-results/**, allure-report/**/*', fingerprint: true, allowEmptyArchive: true
+            archiveArtifacts artifacts: 'playwright-report/**/*, test-results/**, allure-report/**/*', fingerprint: true, allowEmptyArchive: true
             // 1. 发布 JUnit 报告
             junit allowEmptyResults: true, testResults: '**/results.xml'
             // 2. 发布 HTML 报告
