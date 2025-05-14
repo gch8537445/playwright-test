@@ -52,7 +52,7 @@ pipeline {
             publishHTML target: [
               reportDir: 'playwright-report',
               reportFiles: 'index.html',
-              reportName: 'Playwright HTML Report'
+              reportName: 'playwright-report'
             ]
             /* // 3. 发布 Allure 报告
             allure([
