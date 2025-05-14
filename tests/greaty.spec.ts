@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
+  test.setTimeout(90000); // 将此测试的超时设为90秒
   await page.goto('https://mobilev2.imtpath.net/?oauth=6&token=06ce919d-e0b9-453e-92e3-525ce964a015#/');
 
   // 检测是否存在“定位失败请手动输入”并点击
